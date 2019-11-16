@@ -12,7 +12,7 @@ namespace Reservation.DataAccess.Concrete.EntityFramewrok.Mapping
     {
         public DinnerMap()
         {
-            ToTable(@"Dinner", @"dbo");
+            ToTable(@"Dinners", @"dbo");
             HasKey(x => x.Date);
 
             Property(x => x.Date).HasColumnName("Date");

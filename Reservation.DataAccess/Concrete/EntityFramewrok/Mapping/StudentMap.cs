@@ -12,7 +12,7 @@ namespace Reservation.DataAccess.Concrete.EntityFramewrok.Mapping
     {
         public StudentMap()
         {
-            ToTable(@"Student", @"dbo");
+            ToTable(@"Students", @"dbo");
             HasKey(x => x.SchoolNo);
 
             Property(x => x.SchoolNo).HasColumnName("SchoolNo");
