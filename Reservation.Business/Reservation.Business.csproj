@@ -46,10 +46,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\IBreakfastService.cs" />
+    <Compile Include="Abstract\IDinnerService.cs" />
+    <Compile Include="Abstract\IFoodReservationService.cs" />
+    <Compile Include="Abstract\ILunchService.cs" />
+    <Compile Include="Abstract\ISaloonService.cs" />
+    <Compile Include="Abstract\IStudentService.cs" />
+    <Compile Include="Concrete\BreakfastManager.cs" />
+    <Compile Include="Concrete\DinnerManager.cs" />
+    <Compile Include="Concrete\FoodReservaionManager.cs" />
+    <Compile Include="Concrete\LunchManager.cs" />
+    <Compile Include="Concrete\SaloonManager.cs" />
+    <Compile Include="Concrete\StudentManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Reservation.DataAccess\Reservation.DataAccess.csproj">
+      <Project>{CC6A3167-690B-4E18-8D89-B55DC0B8A48C}</Project>
+      <Name>Reservation.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Reservation.Entities\Reservation.Entities.csproj">
+      <Project>{6359A7FC-2379-4138-B2B0-1182E93F35EB}</Project>
+      <Name>Reservation.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\PostSharp.4.2.17\tools\PostSharp.targets" Condition="Exists('..\packages\PostSharp.4.2.17\tools\PostSharp.targets')" />
