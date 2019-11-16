@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace Reservation.Business.Concrete
 {
-    public class FoodReservaionManager : IFoodReservationService
+    public class FoodReservationManager : IFoodReservationService
     {
         private IFoodReservationDal _foodReservationDal;
 
-        public FoodReservaionManager(IFoodReservationDal foodReservationDal)
+        public FoodReservationManager(IFoodReservationDal foodReservationDal)
         {
             _foodReservationDal = foodReservationDal;
         }
