@@ -10,7 +10,8 @@ namespace Reservation.Entities.Concrete
 {
     public class Student : IEntity
     {
-        [Key]
+       
+        public int Id { get; set; }
         public int SchoolNo { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }

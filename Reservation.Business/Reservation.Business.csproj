@@ -50,15 +50,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\IBreakfastService.cs" />
+    <Compile Include="Abstract\IDinnerReservationService.cs" />
     <Compile Include="Abstract\IDinnerService.cs" />
-    <Compile Include="Abstract\IFoodReservationService.cs" />
+    <Compile Include="Abstract\IBreakfastReservationService.cs" />
+    <Compile Include="Abstract\ILunchReservationService.cs" />
     <Compile Include="Abstract\ILunchService.cs" />
     <Compile Include="Abstract\ISaloonService.cs" />
     <Compile Include="Abstract\IStudentService.cs" />
     <Compile Include="Concrete\BreakfastManager.cs" />
     <Compile Include="Concrete\DinnerManager.cs" />
-    <Compile Include="Concrete\FoodReservationManager.cs" />
+    <Compile Include="Concrete\BreakfastReservationManager.cs" />
+    <Compile Include="Concrete\DinnerReservationManager.cs" />
     <Compile Include="Concrete\LunchManager.cs" />
+    <Compile Include="Concrete\LunchReservationManager.cs" />
     <Compile Include="Concrete\SaloonManager.cs" />
     <Compile Include="Concrete\StudentManager.cs" />
     <Compile Include="DependencyResolvers\Ninject\BusinessModule.cs" />

@@ -8,18 +8,16 @@ using System.Threading.Tasks;
 
 namespace Reservation.DataAccess.Concrete.EntityFramewrok.Mapping
 {
-    public class FoodReservationMap : EntityTypeConfiguration<FoodReservation>
+    public class DinnerReservationMap : EntityTypeConfiguration<DinnerReservation>
     {
-        public FoodReservationMap()
+        public DinnerReservationMap()
         {
-            ToTable(@"FoodReservations", @"dbo");
+            ToTable(@"DinnerReservations", @"dbo");
             HasKey(x => x.Id);
 
             Property(x => x.Id).HasColumnName("Id");
             Property(x => x.StudentId).HasColumnName("StudentId");
             Property(x => x.SaloonId).HasColumnName("SaloonId");
-            Property(x => x.IsBreakfast).HasColumnName("IsBreakfast");
-            Property(x => x.IsDinner).HasColumnName("IsDinner");
             Property(x => x.CreatedReservation).HasColumnName("CreatedReservation");
         }
     }

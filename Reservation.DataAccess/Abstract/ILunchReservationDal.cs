@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Reservation.DataAccess.Abstract
 {
-   public interface IFoodReservationDal : IEntityRepository<FoodReservation>
+   public interface ILunchReservationDal : IEntityRepository<LunchReservation>
     {
     }
 }

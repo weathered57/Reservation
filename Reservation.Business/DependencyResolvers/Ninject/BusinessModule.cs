@@ -15,14 +15,14 @@ namespace Reservation.Business.DependencyResolvers.Ninject
     {
         public override void Load()
         {
-            Bind<IFoodReservationService>().To<FoodReservationManager>().InSingletonScope();
+            Bind<IBreakfastReservationService>().To<BreakfastReservationManager>().InSingletonScope();
             Bind<IStudentService>().To<StudentManager>().InSingletonScope();
             Bind<IBreakfastService>().To<BreakfastManager>().InSingletonScope();
             Bind<IDinnerService>().To<DinnerManager>().InSingletonScope();
             Bind<ILunchService>().To<LunchManager>().InSingletonScope();
             Bind<ISaloonService>().To<SaloonManager>().InSingletonScope();
 
-            Bind<IFoodReservationDal>().To<EfFoodReservationDal>().InSingletonScope();
+            Bind<IBreakfastReservationDal>().To<EfBreakfastReservationDal>().InSingletonScope();
             Bind<IStudentDal>().To<EfStudentDal>().InSingletonScope();
             Bind<IBreakfastDal>().To<EfBreakfastDal>().InSingletonScope();
             Bind<IDinnerDal>().To<EfDinnerDal>().InSingletonScope();

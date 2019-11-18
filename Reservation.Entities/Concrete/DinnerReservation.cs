@@ -8,14 +8,13 @@ using System.Threading.Tasks;
 
 namespace Reservation.Entities.Concrete
 {
-    public class Dinner : IEntity
+    public class DinnerReservation : IEntity
     {
-      
+     
         public int Id { get; set; }
-        public DateTime Date { get; set; }
-        public string First { get; set; }
-        public string Second { get; set; }
-        public string Third { get; set; }
-        public string Fourth { get; set; }
+        public DateTime ReservationDate { get; set; }
+        public int StudentId { get; set; }
+        public int SaloonId { get; set; }
+        public DateTime CreatedReservation { get; set; }
     }
 }

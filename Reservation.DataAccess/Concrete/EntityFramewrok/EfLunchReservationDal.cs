@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Reservation.DataAccess.Concrete.EntityFramewrok
 {
-    public class EfFoodReservationDal : EfEntityRepositoryBase<ReservationContext,FoodReservation>,IFoodReservationDal
+    public class EfLunchReservationDal : EfEntityRepositoryBase<ReservationContext, LunchReservation>, ILunchReservationDal
     {
     }
 }

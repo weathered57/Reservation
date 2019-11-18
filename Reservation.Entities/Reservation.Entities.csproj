@@ -45,8 +45,10 @@
     <Compile Include="Abstract\IEntity.cs" />
     <Compile Include="Concrete\Breakfast.cs" />
     <Compile Include="Concrete\Dinner.cs" />
+    <Compile Include="Concrete\DinnerReservation.cs" />
     <Compile Include="Concrete\Lunch.cs" />
-    <Compile Include="Concrete\FoodReservation.cs" />
+    <Compile Include="Concrete\BreakfastReservation.cs" />
+    <Compile Include="Concrete\LunchReservation.cs" />
     <Compile Include="Concrete\Saloon.cs" />
     <Compile Include="Concrete\Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

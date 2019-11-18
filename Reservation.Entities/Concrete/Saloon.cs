@@ -10,7 +10,7 @@ namespace Reservation.Entities.Concrete
 {
     public class Saloon : IEntity
     {
-        [Key]
+       
         public int Id { get; set; }
         public string SaloonName { get; set; }
     }

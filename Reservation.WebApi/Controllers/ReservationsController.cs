@@ -11,20 +11,18 @@ namespace Reservation.WebApi.Controllers
 {
     public class ReservationsController : ApiController
     {
-        private IFoodReservationService _foodReservationService;
-        public ReservationsController(IFoodReservationService foodReservationService)
+        private IBreakfastReservationService _breakfastReservationService;
+        public ReservationsController(IBreakfastReservationService breakfastReservationService)
         {
-            _foodReservationService = foodReservationService;
+            _breakfastReservationService = breakfastReservationService;
         }
 
-        public List<FoodReservation> Get()
+        public List<BreakfastReservation> Get()
         {
-            return _foodReservationService.GetAll().Select(f=> new FoodReservation
+            return _breakfastReservationService.GetAll().Select(f=> new BreakfastReservation
             {
                 Id=f.Id,
-                IsBreakfast= f.IsBreakfast,
-                IsDinner = f.IsDinner,
-                IsLunch = f.IsLunch,
+                ReservationDate=f.ReservationDate,
                 SaloonId = f.SaloonId,
                 StudentId = f.StudentId,
                 CreatedReservation=f.CreatedReservation

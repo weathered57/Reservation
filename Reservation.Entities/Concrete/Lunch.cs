@@ -10,7 +10,8 @@ namespace Reservation.Entities.Concrete
 {
     public class Lunch : IEntity
     {
-        [Key]
+       
+        public int Id { get; set; }
         public DateTime Date { get; set; }
         public string First { get; set; }
         public string Second { get; set; }

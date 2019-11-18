@@ -21,12 +21,21 @@ namespace Reservation.DataAccess.Concrete.EntityFramewrok
         public DbSet<Lunch> Lunchs { get; set; }
         public DbSet<Saloon> Saloons { get; set; }
         public DbSet<Student> Students { get; set; }
-        public DbSet<FoodReservation> FoodReservations { get; set; }
+        public DbSet<BreakfastReservation> BreakfastReservations { get; set; }
+        public DbSet<DinnerReservation> DinnerReservations { get; set; }
+        public DbSet<LunchReservation> LunchReservations { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Configurations.Add(new FoodReservationMap());
+            modelBuilder.Configurations.Add(new BreakfastReservationMap());
+            modelBuilder.Configurations.Add(new BreakfastMap());
+            modelBuilder.Configurations.Add(new DinnerReservationMap());
+            modelBuilder.Configurations.Add(new LunchReservationMap());
+            modelBuilder.Configurations.Add(new SaloonMap());
+            modelBuilder.Configurations.Add(new DinnerMap());
+            modelBuilder.Configurations.Add(new LunchMap());
+            modelBuilder.Configurations.Add(new StudentMap());
         }
     }
 }
