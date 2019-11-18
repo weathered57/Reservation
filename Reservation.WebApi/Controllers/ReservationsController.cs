@@ -19,14 +19,8 @@ namespace Reservation.WebApi.Controllers
 
         public List<BreakfastReservation> Get()
         {
-            return _breakfastReservationService.GetAll().Select(f=> new BreakfastReservation
-            {
-                Id=f.Id,
-                ReservationDate=f.ReservationDate,
-                SaloonId = f.SaloonId,
-                StudentId = f.StudentId,
-                CreatedReservation=f.CreatedReservation
-            }).ToList();
+            return _breakfastReservationService.GetAll();
+          
         }
     }
 }

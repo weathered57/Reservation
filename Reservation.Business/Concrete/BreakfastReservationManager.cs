@@ -1,4 +1,5 @@
-﻿using Reservation.Business.Abstract;
+﻿using AutoMapper;
+using Reservation.Business.Abstract;
 using Reservation.DataAccess.Abstract;
 using Reservation.Entities.Concrete;
 using System;
@@ -12,10 +13,11 @@ namespace Reservation.Business.Concrete
     public class BreakfastReservationManager : IBreakfastReservationService
     {
         private IBreakfastReservationDal _breakfastReservationDal;
-
-        public BreakfastReservationManager(IBreakfastReservationDal foodReservationDal)
+        private readonly IMapper _mapper;
+        public BreakfastReservationManager(IBreakfastReservationDal foodReservationDal,IMapper mapper)
         {
             _breakfastReservationDal = foodReservationDal;
+            _mapper = mapper;
         }
         public BreakfastReservation Add(BreakfastReservation foodReservation)
         {
@@ -24,7 +26,8 @@ namespace Reservation.Business.Concrete
 
         public List<BreakfastReservation> GetAll()
         {
-            return _breakfastReservationDal.GetList();
+            var breakfastReservations=_mapper.Map<List<BreakfastReservation>>(_breakfastReservationDal.GetList());
+            return breakfastReservations;
         }
 
         public BreakfastReservation GetById(int id)
