@@ -18,7 +18,7 @@ namespace Reservation.Business.DependencyResolvers.Ninject
         {
             var config = new MapperConfiguration(cfg =>
               {
-                  cfg.AddProfiles(GetType().Assembly);
+                  cfg.AddMaps(GetType().Assembly);
               });
             return config;
         }
