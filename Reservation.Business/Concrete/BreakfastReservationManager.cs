@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Reservation.Business.Abstract;
 using Reservation.DataAccess.Abstract;
+using Reservation.Entities.ComplexTypes;
 using Reservation.Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -19,9 +20,9 @@ namespace Reservation.Business.Concrete
             _breakfastReservationDal = foodReservationDal;
             _mapper = mapper;
         }
-        public BreakfastReservation Add(BreakfastReservation foodReservation)
+        public BreakfastReservation Add(BreakfastReservation breakfastReservation)
         {
-            return _breakfastReservationDal.Add(foodReservation);
+            return _breakfastReservationDal.Add(breakfastReservation);
         }
 
         public List<BreakfastReservation> GetAll()
@@ -36,9 +37,15 @@ namespace Reservation.Business.Concrete
             return _breakfastReservationDal.Get(p => p.Id == id);
         }
 
-        public BreakfastReservation Update(BreakfastReservation foodReservation)
+        public BreakfastReservation Update(BreakfastReservation breakfastReservation)
         {
-            return _breakfastReservationDal.Update(foodReservation);
+            return _breakfastReservationDal.Update(breakfastReservation);
+        }
+
+        public List<BreakfastReservationDto> GetBreakfastReservaionDetailList()
+        {
+            return _breakfastReservationDal.GetBreakfastReservaionDetailList();
         }
     }
 }
+    

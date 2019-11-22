@@ -1,4 +1,5 @@
-﻿using Reservation.Entities.Concrete;
+﻿using Reservation.Entities.ComplexTypes;
+using Reservation.Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +10,6 @@ namespace Reservation.DataAccess.Abstract
 {
    public interface IBreakfastReservationDal : IEntityRepository<BreakfastReservation>
     {
+        List<BreakfastReservationDto> GetBreakfastReservaionDetailList();
     }
 }

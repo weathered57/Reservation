@@ -110,7 +110,9 @@
   <ItemGroup>
     <Compile Include="App_Start\Ninject.Web.Common.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\ReservationsController.cs" />
+    <Compile Include="Controllers\BreakfastReservationsController.cs" />
+    <Compile Include="Controllers\DinnerReservationsController.cs" />
+    <Compile Include="Controllers\LunchReservationsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

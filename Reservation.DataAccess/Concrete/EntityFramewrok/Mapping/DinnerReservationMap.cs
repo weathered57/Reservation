@@ -16,6 +16,7 @@ namespace Reservation.DataAccess.Concrete.EntityFramewrok.Mapping
             HasKey(x => x.Id);
 
             Property(x => x.Id).HasColumnName("Id");
+            Property(x => x.ReservationDate).HasColumnName("ReservationDate");
             Property(x => x.StudentId).HasColumnName("StudentId");
             Property(x => x.SaloonId).HasColumnName("SaloonId");
             Property(x => x.CreatedReservation).HasColumnName("CreatedReservation");

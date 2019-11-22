@@ -10,7 +10,6 @@ namespace Reservation.Entities.Concrete
 {
     public class LunchReservation : IEntity
     {
-       
         public int Id { get; set; }
         public DateTime ReservationDate { get; set; }
         public int StudentId { get; set; }

@@ -43,6 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\IEntity.cs" />
+    <Compile Include="ComplexTypes\BreakfastReservationDto.cs" />
+    <Compile Include="ComplexTypes\DinnerReservationDto.cs" />
+    <Compile Include="ComplexTypes\LunchReservationDto.cs" />
     <Compile Include="Concrete\Breakfast.cs" />
     <Compile Include="Concrete\Dinner.cs" />
     <Compile Include="Concrete\DinnerReservation.cs" />
@@ -53,8 +56,6 @@
     <Compile Include="Concrete\Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ComplexTypes\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

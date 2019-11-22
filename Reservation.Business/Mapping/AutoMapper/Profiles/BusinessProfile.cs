@@ -13,6 +13,8 @@ namespace Reservation.Business.Mapping.AutoMapper.Profiles
         public BusinessProfile()
         {
             CreateMap<BreakfastReservation, BreakfastReservation>();
+            CreateMap<LunchReservation, LunchReservation>();
+            CreateMap<DinnerReservation, DinnerReservation>();
         }
     }
 }

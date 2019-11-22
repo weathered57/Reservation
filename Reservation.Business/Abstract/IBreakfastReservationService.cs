@@ -1,4 +1,5 @@
-﻿using Reservation.Entities.Concrete;
+﻿using Reservation.Entities.ComplexTypes;
+using Reservation.Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,5 +14,7 @@ namespace Reservation.Business.Abstract
         BreakfastReservation GetById(int id);
         BreakfastReservation Add(BreakfastReservation foodReservation);
         BreakfastReservation Update(BreakfastReservation foodReservation);
+        List<BreakfastReservationDto> GetBreakfastReservaionDetailList();
+
     }
 }
