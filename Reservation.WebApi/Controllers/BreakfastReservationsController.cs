@@ -13,6 +13,7 @@ namespace Reservation.WebApi.Controllers
     [RoutePrefix("Api/BreakfastReservations")]
     public class BreakfastReservationsController : ApiController
     {
+
         private IBreakfastReservationService _breakfastReservationService;
         public BreakfastReservationsController(IBreakfastReservationService breakfastReservationService)
         {
@@ -23,28 +24,59 @@ namespace Reservation.WebApi.Controllers
         // GET: api/BreakfastReservations
         public IEnumerable<BreakfastReservationDto> GetAll(int page=1,int pageSize=5)
         {
-            return _breakfastReservationService.GetBreakfastReservaionDetailList().Skip((page-1) * pageSize).Take(pageSize);
+            try
+            {
+                var result= _breakfastReservationService.GetBreakfastReservaionDetailList().Skip((page - 1) * pageSize).Take(pageSize);
+                return result;
+            }
+            catch (Exception)
+            {
+                throw new HttpResponseException(HttpStatusCode.BadRequest);
+            }
         }
 
         [Route("GetByDate/{startDate}/{endDate}/{page?}/{pageSize?}")]
         [HttpGet]
         public IEnumerable<BreakfastReservationDto> GetByDate(DateTime startDate, DateTime endDate, int page = 1, int pageSize = 5)
         {
-            return _breakfastReservationService.GetBreakfastReservaionDetailList().Where(x => x.ReservationDate > startDate && x.ReservationDate < endDate).Skip((page - 1) * pageSize).Take(pageSize);
+            try
+            {
+                var result= _breakfastReservationService.GetBreakfastReservaionDetailList().Where(x => x.ReservationDate > startDate && x.ReservationDate < endDate).Skip((page - 1) * pageSize).Take(pageSize);
+                return result;
+            }
+            catch (Exception)
+            {
+                throw new HttpResponseException(HttpStatusCode.BadRequest);
+            }            
         }
 
         // GET: api/BreakfastReservations/Get/5
-        [Route("Get")]
+        [Route("Get/{id}")]
         [HttpGet]
         public BreakfastReservation Get(int id)
         {
-            return _breakfastReservationService.GetById(id);
+            try
+            {
+                var result = _breakfastReservationService.GetById(id);
+                return result;
+            }
+            catch (Exception)
+            {
+                throw new HttpResponseException(HttpStatusCode.BadRequest);
+            }
         }
 
         // POST: api/BreakfastReservations
         public void Post(BreakfastReservation breakfastReservation)
-        {
-             _breakfastReservationService.Add(breakfastReservation);
+        {   
+            try
+            {
+                _breakfastReservationService.Add(breakfastReservation);
+            }
+            catch (Exception)
+            {
+                throw new HttpResponseException(HttpStatusCode.BadRequest);
+            }
         }
 
       

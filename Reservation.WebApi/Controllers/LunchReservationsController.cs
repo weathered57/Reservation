@@ -25,30 +25,60 @@ namespace Reservation.WebApi.Controllers
         [HttpGet]
         public IEnumerable<LunchReservationDto> GetAll(int page = 1, int pageSize = 5)
         {
-   
-            return _lunchReservationService.GetLunchReservationDetailList().Skip((page - 1) * pageSize).Take(pageSize);
-
+            try
+            {
+                var result = _lunchReservationService.GetLunchReservationDetailList().Skip((page - 1) * pageSize).Take(pageSize);
+                return result;
+            }
+            catch (Exception)
+            {
+                throw new HttpResponseException(HttpStatusCode.BadRequest);
+            }
         }
 
         [Route("GetByDate/{startDate}/{endDate}/{page?}/{pageSize?}")]
         [HttpGet]
         public IEnumerable<LunchReservationDto> GetByDate(DateTime startDate, DateTime endDate, int page = 1, int pageSize = 5)
         {
-            return _lunchReservationService.GetLunchReservationDetailList().Where(x => x.ReservationDate > startDate && x.ReservationDate < endDate).Skip((page - 1) * pageSize).Take(pageSize);
+            try
+            {
+                var result = _lunchReservationService.GetLunchReservationDetailList().Where(x => x.ReservationDate > startDate && x.ReservationDate < endDate).Skip((page - 1) * pageSize).Take(pageSize);
+                return result;
+            }
+            catch (Exception)
+            {
+                throw new HttpResponseException(HttpStatusCode.BadRequest);
+            }
         }
 
         // GET: api/LunchReservations/Get/5
-        [Route("Get")]
+        [Route("Get/{id}")]
         [HttpGet]
         public LunchReservation Get(int id)
         {
-            return _lunchReservationService.GetById(id);
+            try
+            {
+                var result = _lunchReservationService.GetById(id);
+                return result;
+            }
+            catch (Exception)
+            {
+                throw new HttpResponseException(HttpStatusCode.BadRequest);
+            }
         }
 
         // POST: api/LunchReservations
         public void Post(LunchReservation lunchReservation)
-        {
-            _lunchReservationService.Add(lunchReservation);
+        {          
+            try
+            {
+                _lunchReservationService.Add(lunchReservation);
+            }
+            catch (Exception)
+            {
+
+                throw new HttpResponseException(HttpStatusCode.BadRequest);
+            }
         }
     }
 }
