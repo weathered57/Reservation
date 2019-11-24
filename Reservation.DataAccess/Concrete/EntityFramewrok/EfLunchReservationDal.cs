@@ -17,22 +17,25 @@ namespace Reservation.DataAccess.Concrete.EntityFramewrok
             {
                 var result = (from br in context.LunchReservations
                               join b in context.Lunchs
-                              on br.ReservationDate equals b.Date
-                              join S in context.Students
-                            on br.StudentId equals S.Id
-                              join Sln in context.Saloons
-                            on br.SaloonId equals Sln.Id
+                              on br.ReservationDate equals b.Date into df
+                              from b1 in df.DefaultIfEmpty()
+                              join s in context.Students
+                            on br.StudentId equals s.Id into df1
+                              from s1 in df1.DefaultIfEmpty()
+                              join sln in context.Saloons  
+                            on br.SaloonId equals sln.Id into df2
+                      from sln1 in df2.DefaultIfEmpty()
                               select new LunchReservationDto
                               {
                                   Id = br.Id,
                                   ReservationDate = br.ReservationDate,
-                                  SalonName = Sln.SaloonName,
-                                  StudentName = S.Name,
-                                  SchoolNo = S.SchoolNo,
-                                  FirstMeal = b.First,
-                                  SecondMeal = b.Second,
-                                  ThirdMeal = b.Third,
-                                  FourthMeal = b.Fourth,
+                                  SalonName = sln1.SaloonName,
+                                  StudentName = s1.Name,
+                                  SchoolNo = s1.SchoolNo,
+                                  FirstMeal = b1.First,
+                                  SecondMeal = b1.Second,
+                                  ThirdMeal = b1.Third,
+                                  FourthMeal = b1.Fourth,
 
                               }).ToList();
 

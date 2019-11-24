@@ -23,7 +23,7 @@ namespace Reservation.WebApi.Controllers
         // GET: api/LunchReservations
         [Route("GetAll/{page?}/{pageSize?}")]
         [HttpGet]
-        public HttpResponseMessage GetAll(int page = 1, int pageSize = 5)
+        public HttpResponseMessage GetAll(int page = 1, int pageSize = 20)
         {
             try
             {

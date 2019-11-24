@@ -15,24 +15,27 @@ namespace Reservation.DataAccess.Concrete.EntityFramewrok
         {
             using (ReservationContext context=new ReservationContext())
             {
-                var result = (from br in context.BreakfastReservations
+                var result = (from br in context.BreakfastReservations 
                               join b in context.Breakfasts
-                              on br.ReservationDate equals b.Date
-                              join s in context.Students
-                              on br.StudentId equals s.Id
-                              join Sln in context.Saloons
-                             on br.SaloonId equals Sln.Id
+                              on br.ReservationDate equals b.Date into df
+                              from br1 in df.DefaultIfEmpty()
+                              join s in context.Students.DefaultIfEmpty()
+                              on br.StudentId equals s.Id into df1
+                              from s1 in df1.DefaultIfEmpty()
+                              join sln in context.Saloons.DefaultIfEmpty()
+                             on br.SaloonId equals sln.Id into df2
+                              from sln1 in df2.DefaultIfEmpty()
                               select new BreakfastReservationDto
                               {
                                   Id=br.Id,
                                   ReservationDate=br.ReservationDate,
-                                  SalonName=Sln.SaloonName,
-                                  StudentName=s.Name,
-                                  SchoolNo = s.SchoolNo,
-                                  FirstMeal=b.First,
-                                  SecondMeal = b.Second,
-                                  ThirdMeal = b.Third,
-                                  FourthMeal = b.Fourth,
+                                  SalonName= sln1.SaloonName,
+                                  StudentName=s1.Name,
+                                  SchoolNo = s1.SchoolNo,
+                                  FirstMeal= br1.First,
+                                  SecondMeal = br1.Second,
+                                  ThirdMeal = br1.Third,
+                                  FourthMeal = br1.Fourth,
 
                               }).ToList();
 
