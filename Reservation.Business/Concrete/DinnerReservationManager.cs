@@ -16,14 +16,14 @@ namespace Reservation.Business.Concrete
         private IDinnerReservationDal _dinnerReservationDal;
         private readonly IMapper _mapper;
 
-        public DinnerReservationManager(IDinnerReservationDal dinnerReservationDal,IMapper mapper)
+        public DinnerReservationManager(IDinnerReservationDal dinnerReservationDal, IMapper mapper)
         {
             _dinnerReservationDal = dinnerReservationDal;
             _mapper = mapper;
         }
         public DinnerReservation Add(DinnerReservation dinnerReservation)
         {
-           return _dinnerReservationDal.Add(dinnerReservation);
+            return _dinnerReservationDal.Add(dinnerReservation);
         }
 
         public List<DinnerReservation> GetAll()
@@ -37,7 +37,11 @@ namespace Reservation.Business.Concrete
             var dinnerReservation = _mapper.Map<DinnerReservation>(_dinnerReservationDal.Get(d => d.Id == id));
             return dinnerReservation;
         }
+        public DinnerReservation GetByDateWithStudent(DateTime date,int studentId)
+        {
+            return _dinnerReservationDal.Get(p => p.ReservationDate == date && p.StudentId == studentId);
 
+        }
         public DinnerReservation Update(DinnerReservation dinnerReservation)
         {
             return _dinnerReservationDal.Update(dinnerReservation);

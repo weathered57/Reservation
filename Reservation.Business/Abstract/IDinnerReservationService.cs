@@ -12,6 +12,7 @@ namespace Reservation.Business.Abstract
     {
         List<DinnerReservation> GetAll();
         DinnerReservation GetById(int id);
+        DinnerReservation GetByDateWithStudent(DateTime date, int studentId);
         DinnerReservation Add(DinnerReservation dinnerReservation);
         DinnerReservation Update(DinnerReservation dinnerReservation);
         List<DinnerReservationDto> GetDinnerReservationDetailList();

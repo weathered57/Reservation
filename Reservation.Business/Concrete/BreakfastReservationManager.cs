@@ -41,11 +41,16 @@ namespace Reservation.Business.Concrete
         {
             return _breakfastReservationDal.Update(breakfastReservation);
         }
-
+        public BreakfastReservation GetByDateWithStudent(DateTime date,int studentId)
+        {
+            return _breakfastReservationDal.Get(p => p.ReservationDate == date && p.StudentId == studentId);
+        }
         public List<BreakfastReservationDto> GetBreakfastReservaionDetailList()
         {
             return _breakfastReservationDal.GetBreakfastReservaionDetailList();
         }
+
+      
     }
 }
     

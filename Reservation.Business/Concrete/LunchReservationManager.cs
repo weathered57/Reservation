@@ -37,7 +37,10 @@ namespace Reservation.Business.Concrete
             var lunchReservations = _mapper.Map<LunchReservation>(_lunchReservationDal.Get(p => p.Id == id));
             return lunchReservations;
         }
-
+        public LunchReservation GetByDateWithStudent(DateTime date,int studentId)
+        {
+            return _lunchReservationDal.Get(p => p.ReservationDate == date && p.StudentId == studentId);
+        }
         public LunchReservation Update(LunchReservation foodReservation)
         {
             return _lunchReservationDal.Update(foodReservation);

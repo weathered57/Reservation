@@ -22,64 +22,66 @@ namespace Reservation.WebApi.Controllers
         // GET: api/DinnerReservations
         [Route("GetAll/{page?}/{pageSize?}")]
         [HttpGet]
-        public IEnumerable<DinnerReservationDto> GetAll(int page = 1, int pageSize = 5)
+        public HttpResponseMessage GetAll(int page = 1, int pageSize = 5)
         {
             try
             {
                 var result = _dinnerReservationService.GetDinnerReservationDetailList().Skip((page - 1) * pageSize).Take(pageSize);
-                return result;
+                return Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception)
             {
-
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Hata Oluştu");
             }
         }
 
         [Route("GetByDate/{startDate}/{endDate}/{page?}/{pageSize?}")]
         [HttpGet]
-        public IEnumerable<DinnerReservationDto> GetByDate(DateTime startDate, DateTime endDate, int page = 1, int pageSize = 5)
+        public HttpResponseMessage GetByDate(DateTime startDate, DateTime endDate, int page = 1, int pageSize = 5)
         {
             try
             {
-                var result= _dinnerReservationService.GetDinnerReservationDetailList().Where(x => x.ReservationDate > startDate && x.ReservationDate < endDate).Skip((page - 1) * pageSize).Take(pageSize);
-                return result;
+                var result= _dinnerReservationService.GetDinnerReservationDetailList().Where(x => x.ReservationDate >= startDate && x.ReservationDate <= endDate).Skip((page - 1) * pageSize).Take(pageSize);
+                return Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception)
             {
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Hata Oluştu");
             }
         }
 
         // GET: api/DinnerReservations/Get/5
         [Route("Get/{id}")]
         [HttpGet]
-        public DinnerReservation Get(int id)
+        public HttpResponseMessage Get(int id)
         {
             try
             {
                 var result= _dinnerReservationService.GetById(id);
-                return result;
+                return Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception)
             {
-
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Hata Oluştu");
             }
         }
 
         // POST: api/DinnerReservations
-        public void Post(DinnerReservation dinnerReservation)
-        {
-           
+        public HttpResponseMessage Post(DinnerReservation dinnerReservation)
+        {      
             try
             {
-                _dinnerReservationService.Add(dinnerReservation);
+                var dateWithStudentResult = _dinnerReservationService.GetByDateWithStudent(dinnerReservation.ReservationDate, dinnerReservation.StudentId);
+                if (dateWithStudentResult != null)
+                {
+                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Kullanıcıya ait Aynı tarihli Rezervasyon bulunuyor.");
+                }
+                var result= _dinnerReservationService.Add(dinnerReservation);
+                return Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception)
             {
-
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Hata Oluştu");
             }
         }
     }
